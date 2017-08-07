@@ -1,51 +1,40 @@
 import * as React from 'react'
 
-interface IProps {
-  defaultValue: number | string
-}
-
-interface IState {
-  value: number
-}
-
-export default class CounterComponent extends React.Component<IProps, IState> {
-  constructor(props: IProps) {
-    super(props);
-    const {defaultValue} = props
+export default class CounterComponent extends React.Component {
+  constructor(props) {
+    super(props)
     this.state = {
-      value: typeof(defaultValue) === 'number' ? defaultValue : parseInt(defaultValue, 10),
-    };
+      value: props.defaultValue
+    }
   }
 
-  public handleChangeValue(decrement: boolean): void {
-    this.setState((prevState) => ({
-      value: decrement ? prevState.value - 1 : prevState.value + 1,
+  handleChangeValue = ()=> {
+    this.setState((prev) => ({
+      value: prev.value+1
     }))
   }
 
-  public renderChangeValue(
-    { decrement= false }: {decrement?: boolean} = {}
-  ): React.ReactElement<{}> {
-
+  renderValueChanger() {
     return (
-      <button
-        className={`app-counter-button--${decrement ? 'decrementer' : 'incrementer'}`}
-        onClick={this.handleChangeValue.bind(this, decrement)}
+      <div
+        className="app-counter-button--incrementer"
+        onClick={this.handleChangeValue.bind(this)}
       >
-        {decrement ? 'Decrease' : 'Increase'}
-      </button>
+        Incrementer        
+      </div>
     )
   }
 
-  public render() {
+  render() {
     return (
       <div>
-        <p>Count is {this.state.value}</p>
-        <p>
-          {this.renderChangeValue()}
-          {this.renderChangeValue({decrement: true})}
-        </p>
+        <div className="app-counter">
+          <div className="app-counter-message">
+            Count is {this.state.value}
+          </div>
+          {this.renderValueChanger()}
+        </div>
       </div>
-    );
+    )
   }
 }
