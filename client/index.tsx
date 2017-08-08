@@ -2,7 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import * as React from 'react';
 import { render } from 'react-dom'
 
-import Counter from './CounterComponent'
+import Counter from '../imports/ui/atom/CounterComponent'
 
 const Contents = () => (
   <div>
