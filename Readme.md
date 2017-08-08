@@ -13,6 +13,7 @@ Start a new react project with est. lifespan: 2017Q3 -> 2018Q2
 │   ├── /packages               # List of 3rd party ATMOSPHERE libraries and utilities
 ├── /.vscode/                   # IDE configuration and typing build directory
 ├── /client/                    # Client-side only hooks
+├── /docs/                      # Documentation about the repo not covered in this Readme.md
 ├── /node_modules/              # 3rd-party libraries and utilities
 ├── /public/                    # Static files which are copied into the /build/public folder
 ├── /imports/                   # The source code of the application
@@ -23,7 +24,7 @@ Start a new react project with est. lifespan: 2017Q3 -> 2018Q2
 │       ├── /client/            # Client config: routes
 │       ├── /server/            # Server config: accounts, register-apis, fixtures
 │   ├── /ui/                    # 1st-Party React UI Library - interface for 3rd party libraries
-│       ├── /atom/              # Atomic parts for the ui library - bespoke components
+│       ├── /lib/               # Atomic parts for the ui library - bespoke components
 │   └── ...                     # Other core framework modules
 ├── /server/                    # Server-side only hooks
 └── .gitignore                  # Only use this .gitignore except for extractable modules

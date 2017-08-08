@@ -2,12 +2,14 @@ import { Meteor } from 'meteor/meteor';
 import * as React from 'react';
 import { render } from 'react-dom'
 
-import Counter from '../imports/ui/atom/CounterComponent'
+import {Counter, Tasks} from '../imports/ui/lib/'
 
 const Contents = () => (
   <div>
     <h3>Counter</h3>
     <Counter defaultValue={100} />
+    <h3>Tasks</h3>
+    <Tasks />
   </div>
 )
 const App = () => (<div>

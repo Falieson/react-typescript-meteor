@@ -6,6 +6,7 @@ test('CounterComponent exists', () => {
   const component = shallow(<Counter defaultValue={100} />);
 
   const counterMessage = component.find('.app-counter-message')
+  expect(counterMessage.exists()).toEqual(true)
   expect(counterMessage.text()).toEqual('Count is 100');
 
   const counterAdd = component.find('.app-counter-button--incrementer')
