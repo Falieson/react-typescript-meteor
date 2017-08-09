@@ -10,7 +10,7 @@ interface IProps {
   routes: IRoute[]
 }
 
-export default class Layrouter extends React.Component<IProps, {}> {
+export default class LayrouterModule extends React.Component<IProps, {}> {
   render() {
     return (
       <BrowserRouter>

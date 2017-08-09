@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Switch } from 'react-router'
 
 import { IRoute } from './'
 import Route from './RouteComponent'
@@ -8,7 +9,7 @@ interface IProps {
   routes: IRoute[]
 }
 
-export default class Layrouter extends React.Component<IProps, {}> {
+export default class LayoutComponent extends React.Component<IProps, {}> {
   render() {
     const Navigation = () => (
       <ul>
@@ -20,7 +21,9 @@ export default class Layrouter extends React.Component<IProps, {}> {
     return (
     <div className='react-layout'>
       <Navigation />
-      {this.props.routes.map((r: IRoute, i: number) => Route(r, i))}
+      <Switch>
+        {this.props.routes.map((r: IRoute, i: number) => Route(r, i))}
+      </Switch>
     </div>
     )
   }
