@@ -1,3 +1,8 @@
+// Has a .tests. file name so Typescript doesn't fail on expect()
+test('TasksModule shared tests loaded', ()=> {
+  expect(true).toBe(true)
+})
+
 // HEADER
 export function tasksHeaderMessageTest(component, message, count) {
   const taskHeaderMessage = component.find('.app-tasks-header')

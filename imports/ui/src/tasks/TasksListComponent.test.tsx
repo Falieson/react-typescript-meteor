@@ -3,7 +3,7 @@ import {shallow, mount} from 'enzyme'
 import * as React from 'react';
 import TasksList from './TasksListComponent'
 import {TaskItem} from './TasksItemModel'
-import {tasksListEmptyTest} from './TasksTests'
+import {tasksListEmptyTest} from './TasksTests.test'
 
 test('TasksList renders with 0 records', () => {
   const component = shallow(<TasksList tasks={[]} />)

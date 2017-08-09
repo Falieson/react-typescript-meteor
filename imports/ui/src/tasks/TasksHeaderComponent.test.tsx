@@ -6,7 +6,7 @@ import {
   tasksHeaderMessageTest,
   tasksInputPlaceholderTest,
   tasksInputSubmitTest,
-} from './TasksTests'
+} from './TasksTests.test'
 
 
 test('TaskHeader exists', () => {

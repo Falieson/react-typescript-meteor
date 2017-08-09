@@ -7,7 +7,7 @@ import {
   tasksInputPlaceholderTest,
   tasksInputSubmitTest,
   tasksListEmptyTest,
-} from './TasksTests'
+} from './TasksTests.test'
 
 test('TasksModule renders with 0 records', () => {
   const component = mount(<TasksModule />)
