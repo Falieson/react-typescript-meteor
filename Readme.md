@@ -5,6 +5,18 @@ react-typescript-meteor | Sustainable, Large Scale, X-Device Design
 Start a new react project with est. lifespan: 2017Q3 -> 2018Q2
 ---
 
+## Contributing
+This repository uses 'commitizen', start a commit with `meteor npm run commit`
+
+### Precommit Hook
+Before a commit is saved, the precommit script will run, for example: `"precommit": "npm run test"` which will run the test script.
+
+
+You can skip the precommit hook from running by passing `--no-verify` to commit like :
+```
+$ meteor npm run commit --no-verify # equivalent to git commit --no-verify -m "message"
+```
+
 ## File Structure
 
 ```text

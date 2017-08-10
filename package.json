@@ -6,7 +6,12 @@
     "start": "meteor run",
     "test": "npm run test:jest",
     "test:jest": "jest",
-    "test:jest:watch": "jest --watchAll"
+    "test:jest:watch": "jest --watchAll",
+    "type:imports": "tslint -p ./tsconfig.json --type-check './imports/**/*.{ts,tsx}'",
+    "type:client": "tslint -p ./tsconfig.json --type-check './client/**/*.{ts,tsx}'",
+    "type:server": "tslint -p ./tsconfig.json --type-check './server/**/*.ts'",
+    "type": "npm run type:client && npm run type:server && npm run type:imports",
+    "precommit": "npm run test"
   },
   "dependencies": {
     "babel-runtime": "6.20.0",
@@ -31,7 +36,9 @@
     "cz-conventional-changelog": "2.0.0",
     "enzyme": "2.9.1",
     "jest": "20.0.4",
+    "jest-cli": "^20.0.4",
     "jest-meteor-stubs": "1.5.1",
+    "meteor-husky": "^0.14.6",
     "react-test-renderer": "15.6.1",
     "ts-jest": "20.0.9",
     "tslint": "5.5.0",
