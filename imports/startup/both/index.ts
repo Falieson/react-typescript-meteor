@@ -1,1 +1,1 @@
-import './register-methods'
+import './register-methods' // tslint:disable-line no-import-side-effect

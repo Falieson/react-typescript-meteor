@@ -1,0 +1,36 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint:latest",
+    "tslint-react",
+    "tslint-eslint-rules",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "restrict-plus-operands": true,
+    "strict-boolean-expressions": [true,
+      "allow-mix",
+      "allow-string",
+      "allow-number",
+      "allow-null-union",
+      "allow-boolean-or-undefined",
+      "allow-undefined-union"
+    ], // https://palantir.github.io/tslint/rules/strict-boolean-expressions/
+    "switch-default": true,
+    "triple-equals": [true],
+    "prefer-for-of": true,
+    "no-any": true,
+    "no-empty-interface": false,
+    "no-import-side-effect": true,
+    "no-unused-variable": true,
+    "jsx-boolean-value": "never",
+    "jsx-wrap-multiline": false,
+    "curly": [true, "ignore-same-line"],
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "semicolon": ["never"],
+    "quotemark": [true, "single", "avoid-escape"],
+    "max-classes-per-file": [true, 2],
+    "eofline": true,
+    "indent": [true, "spaces", 2]
+  }
+}

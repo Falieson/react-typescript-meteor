@@ -1,4 +1,4 @@
-import {shallow, mount} from 'enzyme'
+import {mount, shallow} from 'enzyme'
 import * as React from 'react'
 import Counter from './CounterComponent'
 

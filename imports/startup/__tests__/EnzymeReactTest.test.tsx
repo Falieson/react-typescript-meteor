@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme'
 import * as React from 'react'
 
-const Hello = ()=> (<div id="message">Hello</div>)
+const Hello = ()=> (<div id='message'>Hello</div>)
 
 
 test('CounterComponent changes Value after Clicked', () => {

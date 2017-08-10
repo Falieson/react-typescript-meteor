@@ -30,8 +30,6 @@
   ```
 */
 
-import { Meteor } from 'meteor/meteor';
-import { SimpleSchema } from 'simpl-schema';
 import { ValidatedMethod } from 'meteor/mdg:validated-method';
 
 import Counters from './collections'

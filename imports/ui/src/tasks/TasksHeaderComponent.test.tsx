@@ -1,4 +1,4 @@
-import {shallow, mount} from 'enzyme'
+import {mount, shallow} from 'enzyme'
 import * as React from 'react'
 import TaskHeader from './TasksHeaderComponent'
 
@@ -10,7 +10,7 @@ import {
 
 
 test('TaskHeader exists', () => {
-  const component = shallow(<TaskHeader listName="Demo" totalTasks={55} />)
+  const component = shallow(<TaskHeader listName='Demo' totalTasks={55} />)
 
   tasksHeaderMessageTest(component, 'Demo', 55)
   tasksInputPlaceholderTest(component)
@@ -19,7 +19,7 @@ test('TaskHeader exists', () => {
 
 
 test('TaskHeader changes Value after Inputted', () => {
-  const component = mount(<TaskHeader listName="Demo" totalTasks={55} />)
+  const component = mount(<TaskHeader listName='Demo' totalTasks={55} />)
 
   const taskInput = component.find('.app-tasks-newTask-input')
   expect(taskInput.props().value).toEqual('')
@@ -33,7 +33,7 @@ test('TaskHeader changes Value after Inputted', () => {
 })
 
 test('TaskHeader clears Value after Submitted', () => {
-  const component = mount(<TaskHeader listName="Demo" totalTasks={55} />)
+  const component = mount(<TaskHeader listName='Demo' totalTasks={55} />)
 
   const taskInput = component.find('.app-tasks-newTask-input')
   expect(taskInput.props().value).toEqual('')

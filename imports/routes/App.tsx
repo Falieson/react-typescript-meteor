@@ -3,11 +3,11 @@ import * as React from 'react'
 
 import { compose } from 'react-komposer'
 
-import {Counter, Tasks} from '../ui/src/'
-import {Layrouter} from '../ui/lib/'
 import {RouteMap} from '../startup/client/'
+import {Layrouter} from '../ui/lib/'
+import {Counter, Tasks} from '../ui/src/'
 
-const Contents3 = (props) => (
+const Contents3 = props => (
   <div>
     <h3>Reactive Data from Meteor with React Komposer</h3>
     <p>Meteor Connected: {props.connection.connected? 'true': 'false'}</p>
@@ -31,7 +31,7 @@ const Contents1 = () => (
     <Tasks />
   </div>
 )
-const App = (props) => (
+const App = props => (
   <div>
     <Contents3 {...props} />
     <hr />
@@ -52,7 +52,7 @@ function getTrackerLoader(reactiveMapper) {
     let trackerCleanup = null;
     const handler = Tracker.nonreactive(() => {
       return Tracker.autorun(() => {
-      	// assign the custom clean-up function.
+        // assign the custom clean-up function.
         trackerCleanup = reactiveMapper(props, onData, env);
       });
     });

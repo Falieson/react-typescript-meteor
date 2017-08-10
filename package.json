@@ -3,7 +3,12 @@
   "private": true,
   "scripts": {
     "commit": "git-cz",
+    "commit:noverify": "git-cz --no-verify",
     "start": "meteor run",
+    "lint:client": "tslint --fix -c ./tslint.json -p ./tsconfig.json './client/**/*.{ts,tsx}'",
+    "lint:imports": "tslint --fix -c ./tslint.json -p ./tsconfig.json './imports/**/*.{ts,tsx}'",
+    "lint:server": "tslint --fix -c ./tslint.json -p ./tsconfig.json './server/**/*.ts'",
+    "lint": "npm run lint:client && npm run lint:server && npm run lint:imports",
     "test": "npm run test:jest",
     "test:jest": "jest",
     "test:jest:watch": "jest --watchAll",
@@ -11,7 +16,7 @@
     "type:client": "tslint -p ./tsconfig.json --type-check './client/**/*.{ts,tsx}'",
     "type:server": "tslint -p ./tsconfig.json --type-check './server/**/*.ts'",
     "type": "npm run type:client && npm run type:server && npm run type:imports",
-    "precommit": "npm run test"
+    "precommit": "npm run lint && npm run test"
   },
   "dependencies": {
     "babel-runtime": "6.20.0",
@@ -36,12 +41,14 @@
     "cz-conventional-changelog": "2.0.0",
     "enzyme": "2.9.1",
     "jest": "20.0.4",
-    "jest-cli": "^20.0.4",
+    "jest-cli": "20.0.4",
     "jest-meteor-stubs": "1.5.1",
-    "meteor-husky": "^0.14.6",
+    "meteor-husky": "0.14.6",
     "react-test-renderer": "15.6.1",
     "ts-jest": "20.0.9",
-    "tslint": "5.5.0",
+    "tslint": "5.6.0",
+    "tslint-config-prettier": "1.3.0",
+    "tslint-eslint-rules": "^4.1.1",
     "tslint-react": "3.1.0",
     "typescript": "2.4.2"
   },

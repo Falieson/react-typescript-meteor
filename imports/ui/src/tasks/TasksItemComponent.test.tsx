@@ -1,4 +1,4 @@
-import {shallow, mount} from 'enzyme'
+import {shallow} from 'enzyme'
 import * as React from 'react'
 import TasksItem from './TasksItemComponent'
 test('TaskItem exists', () => {

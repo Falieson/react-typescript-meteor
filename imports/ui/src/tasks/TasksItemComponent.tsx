@@ -9,7 +9,7 @@ class TasksItem extends React.Component<IProps, {}> {
   public render() {
     const {name} = this.props.task
     return (
-      <li className="app-tasks-item">
+      <li className='app-tasks-item'>
         {name}
       </li>
     )

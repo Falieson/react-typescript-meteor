@@ -2,19 +2,19 @@ import * as React from 'react';
 import { Switch } from 'react-router'
 
 import { IRoute } from './'
-import Route from './RouteComponent'
 import Link from './LinkComponent'
+import Route from './RouteComponent'
 
 interface IProps {
   routes: IRoute[]
 }
 
 export default class LayoutComponent extends React.Component<IProps, {}> {
-  render() {
+  public render() {
     const Navigation = () => (
       <ul>
-        <li><Link to='/' label="Home" /></li>
-        <li><Link to='/about' label="About" /></li>
+        <li><Link to='/' label='Home' /></li>
+        <li><Link to='/about' label='About' /></li>
       </ul>
     )
 

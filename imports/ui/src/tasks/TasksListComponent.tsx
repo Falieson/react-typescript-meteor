@@ -12,7 +12,7 @@ const styles = {
 class TasksList extends React.Component<IProps, {}> {
   public renderNoTasks() {
     return (
-      <h3 className="app-tasks-list--empty">
+      <h3 className='app-tasks-list--empty'>
         Start your list!
       </h3>
     )
@@ -24,8 +24,8 @@ class TasksList extends React.Component<IProps, {}> {
   }
   public renderList() {
     return (
-      <ul style={styles.ul} className="app-tasks-list">
-        {this.props.tasks.map((task) => this.renderTask(task))}
+      <ul style={styles.ul} className='app-tasks-list'>
+        {this.props.tasks.map(task => this.renderTask(task))}
       </ul>
     )
   }
@@ -35,7 +35,7 @@ class TasksList extends React.Component<IProps, {}> {
     const result = tasks.length > 0 ? this.renderList() : this.renderNoTasks()
 
     return (
-      <div className="app-tasks-list--container">
+      <div className='app-tasks-list--container'>
         {result}
       </div>
     )

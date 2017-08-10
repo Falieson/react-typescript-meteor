@@ -21,7 +21,7 @@ const StandardRecordSchema = new SimpleSchema({
     type: Date,
     label: 'Creation Date',
     optional: false,
-    autoValue: function(){
+    autoValue(){
       if (this.isInsert) return new Date()
       if (this.isUpsert) return { $setOnInsert: newDate() }
       return this.unset();
@@ -31,7 +31,7 @@ const StandardRecordSchema = new SimpleSchema({
     type: Date,
     label: 'Update Date',
     optional: false,
-    autoValue: function() {
+    autoValue() {
       if (this.isInsert || this.isUpsert) return new Date()
       return this.unset();
     }

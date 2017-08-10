@@ -23,7 +23,7 @@ export default class CounterComponent extends React.Component<IProps, IState> {
   }
 
   public handleChangeValue(decrement: boolean): void {
-    this.setState((prevState) => ({
+    this.setState(prevState => ({
       value: decrement ? prevState.value - 1 : prevState.value + 1,
     }))
   }
@@ -31,20 +31,20 @@ export default class CounterComponent extends React.Component<IProps, IState> {
   public handleClickNew() {
     const randomId = `${Math.floor((Math.random() * 100) + 1)}${Math.floor((Math.random() * 100) + 1)}`
     const oldCounter = {id: randomId, value: this.state.value }
-    this.setState((ps) => ({
+    this.setState(ps => ({
       counters: [...ps.counters, oldCounter],
       value: this.props.defaultValue
     }))
 
-    Meteor.call('Counters.methods.add', oldCounter, (err: any, res: any) => {
+    Meteor.call('Counters.methods.add', oldCounter, (err: {}, res: {}) => {
       if(!err) {
-        console.log("Added CounterID: ", res)
+        console.log('Added CounterID: ', res)
       } else {
         const {message} = err
         if(message){
           console.error(message, {err})
         } else {
-          console.error("Full Error: ", {err})
+          console.error('Full Error: ', {err})
         }
       }      
     })
@@ -78,15 +78,15 @@ export default class CounterComponent extends React.Component<IProps, IState> {
   public render() {
     return (
       <div>
-        <div className="app-counter">
-          <div className="app-counter-message">
+        <div className='app-counter'>
+          <div className='app-counter-message'>
             Count is {this.state.value}
           </div>
           {this.renderChangeValue()}
           {this.renderChangeValue({decrement: true})}
           {this.renderNewCounter()}
         </div>
-        <div className="app-counter-amount">
+        <div className='app-counter-amount'>
           Counters created: {this.state.counters.length + 1}
         </div>
       </div>

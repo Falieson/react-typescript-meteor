@@ -1,8 +1,7 @@
-import undefined from './TasksItemComponent';
-import {shallow, mount} from 'enzyme'
+import {mount, shallow} from 'enzyme'
 import * as React from 'react';
-import TasksList from './TasksListComponent'
 import {TaskItem} from './TasksItemModel'
+import TasksList from './TasksListComponent'
 import {tasksListEmptyTest} from './TasksTests.test'
 
 test('TasksList renders with 0 records', () => {
@@ -19,9 +18,9 @@ test('TasksList renders with 0 records', () => {
 
 test('TasksList renders with 3 tasks', () => {
   const records = [
-    new TaskItem({name: "First Task"}),
-    new TaskItem({name: "Second Task"}),
-    new TaskItem({name: "Third Task"}),
+    new TaskItem({name: 'First Task'}),
+    new TaskItem({name: 'Second Task'}),
+    new TaskItem({name: 'Third Task'}),
   ]
   const component = mount(<TasksList tasks={records} />)
 

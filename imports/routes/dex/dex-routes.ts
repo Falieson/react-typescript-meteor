@@ -1,6 +1,6 @@
-import {RouteRegistrar, Route, IRoute} from '../../ui/lib/layrouter/'
-import Home from './home/'
+import {IRoute, Route, RouteRegistrar} from '../../ui/lib/layrouter/'
 import About from './about/'
+import Home from './home/'
 
 const routesCollection: IRoute[] = []
 

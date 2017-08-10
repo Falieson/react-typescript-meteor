@@ -63,7 +63,7 @@ class TasksHeader extends React.Component<IProps, IState> {
 
   public renderTaskHeader() {
     return (
-      <h2 style={styles.h2} className="app-tasks-header">
+      <h2 style={styles.h2} className='app-tasks-header'>
         {this.props.listName} ({this.props.totalTasks})
       </h2>
     )
@@ -72,7 +72,7 @@ class TasksHeader extends React.Component<IProps, IState> {
     return (
       <input
         type='text'
-        className="app-tasks-newTask-input"
+        className='app-tasks-newTask-input'
         onChange={this.onTaskNameChange}
         value={this.state.newTaskTitle}
         placeholder='New Task Name'
@@ -84,16 +84,16 @@ class TasksHeader extends React.Component<IProps, IState> {
     return (
       <input
         type='submit'
-        className="app-tasks-newTask-submit"
+        className='app-tasks-newTask-submit'
         onClick={this.onTaskSubmit}
-        value="Add"
+        value='Add'
       />
     )
   }
 
   public render() {
     return (
-      <div style={styles.container} className="app-tasks-header--container">
+      <div style={styles.container} className='app-tasks-header--container'>
         {this.renderTaskHeader()}
         <div style={styles.subheader}>
           {this.renderTaskInput()}

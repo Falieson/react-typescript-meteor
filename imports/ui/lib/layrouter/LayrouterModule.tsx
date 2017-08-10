@@ -11,7 +11,7 @@ interface IProps {
 }
 
 export default class LayrouterModule extends React.Component<IProps, {}> {
-  render() {
+  public render() {
     return (
       <BrowserRouter>
         <div className='react-router'>
