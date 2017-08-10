@@ -36,7 +36,7 @@ export default class CounterComponent extends React.Component<IProps, IState> {
       value: this.props.defaultValue
     }))
 
-    Meteor.call('counters.add', oldCounter, (err: any, res: any) => {
+    Meteor.call('Counters.methods.add', oldCounter, (err: any, res: any) => {
       if(!err) {
         console.log("Added CounterID: ", res)
       } else {
