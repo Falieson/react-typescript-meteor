@@ -64,17 +64,17 @@ function getTrackerLoader(reactiveMapper) {
   };
 }
 
-function reactiveMapper(props, onData) {
+function AppData(props, onData) {
   const loggingIn = Meteor.loggingIn()
   const userId = Meteor.userId()
   const connection = Meteor.status()
   onData(null, {
+    authenticated: !loggingIn && !!userId,
+    connection,
     loggingIn,
     userId,
-    connection,
-    authenticated: !loggingIn && !!userId,
   });
 }
 
-const Container = compose(getTrackerLoader(reactiveMapper))(App);
+const Container = compose(getTrackerLoader(AppData))(App);
 export default Container

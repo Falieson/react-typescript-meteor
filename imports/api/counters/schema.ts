@@ -4,15 +4,15 @@ import { StandardRecordSchema } from '../utils/schemas'
 
 const Schema = {
   id: {
-    type: String,
     label: 'name',
     optional: true,
+    type: String,
   },
   value: {
-    type: Number,
+    defaultValue: 0,
     label: 'value',
     optional: false,
-    defaultValue: 0
+    type: Number,
   },
 }
 

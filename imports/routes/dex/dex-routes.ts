@@ -7,16 +7,16 @@ const routesCollection: IRoute[] = []
 RouteRegistrar({
   collection: routesCollection,
   record: new Route({
-    path: '/',
     component: Home,
-    exact: true
+    exact: true,
+    path: '/',
   })
 })
 RouteRegistrar({
   collection: routesCollection,
   record: new Route({
-    path: '/about',
     component: About,
+    path: '/about',
   })
 })
 

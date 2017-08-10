@@ -18,14 +18,15 @@ export default function LinkComponent({
   label='Link',
   children
 }: IProps) {
-  const goto = href || target || to || '#'
+  let goto = href || target || to
+  if(!goto) goto = '#'
 
   return (
     <Link
       to={goto}
       target={self?'_self':'_blank'}
     >
-      {children || label}
+      {children === undefined? label : children}
     </Link>
   )
 }

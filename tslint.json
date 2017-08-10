@@ -12,7 +12,6 @@
       "allow-mix",
       "allow-string",
       "allow-number",
-      "allow-null-union",
       "allow-boolean-or-undefined",
       "allow-undefined-union"
     ], // https://palantir.github.io/tslint/rules/strict-boolean-expressions/
@@ -20,6 +19,7 @@
     "triple-equals": [true],
     "prefer-for-of": true,
     "no-any": true,
+    "no-console": [true, "log"],
     "no-empty-interface": false,
     "no-import-side-effect": true,
     "no-unused-variable": true,

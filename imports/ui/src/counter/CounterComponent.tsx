@@ -17,9 +17,10 @@ export default class CounterComponent extends React.Component<IProps, IState> {
     super(props);
     const {defaultValue, value} = props
     this.state = {
-      value: value || defaultValue,
-      counters: []
+      counters: [],
+      value: typeof(value) === 'number'? value : defaultValue,
     };
+    this.handleClickNew = this.handleClickNew.bind(this)
   }
 
   public handleChangeValue(decrement: boolean): void {
@@ -36,15 +37,15 @@ export default class CounterComponent extends React.Component<IProps, IState> {
       value: this.props.defaultValue
     }))
 
-    Meteor.call('Counters.methods.add', oldCounter, (err: {}, res: {}) => {
-      if(!err) {
-        console.log('Added CounterID: ', res)
+    Meteor.call('Counters.methods.add', oldCounter, (err: {}, res: string) => {
+      if(err === undefined) {
+        // if(Meteor.isDevelopment) console.log('Added CounterID: ', res)
       } else {
         const {message} = err
         if(message){
-          console.error(message, {err})
+          if(Meteor.isDevelopment) console.error(message, {err})
         } else {
-          console.error('Full Error: ', {err})
+          if(Meteor.isDevelopment) console.error('Full Error: ', {err})
         }
       }      
     })
@@ -68,7 +69,7 @@ export default class CounterComponent extends React.Component<IProps, IState> {
     return (
       <button
         className={`app-counter-button--new`}
-        onClick={this.handleClickNew.bind(this)}
+        onClick={this.handleClickNew}
       >
         New
       </button>

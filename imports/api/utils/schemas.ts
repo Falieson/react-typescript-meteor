@@ -13,14 +13,14 @@ interface IStandardRecord extends ITimeStamp, IMongoUID {}
 
 const StandardRecordSchema = new SimpleSchema({
   _id: {
-    type: Date,
     label: 'UID',
     optional: true,
+    type: Date,
   },
   created: {
-    type: Date,
     label: 'Creation Date',
     optional: false,
+    type: Date,
     autoValue(){
       if (this.isInsert) return new Date()
       if (this.isUpsert) return { $setOnInsert: newDate() }
@@ -28,9 +28,9 @@ const StandardRecordSchema = new SimpleSchema({
     }
   },
   updated: {
-    type: Date,
     label: 'Update Date',
     optional: false,
+    type: Date,
     autoValue() {
       if (this.isInsert || this.isUpsert) return new Date()
       return this.unset();

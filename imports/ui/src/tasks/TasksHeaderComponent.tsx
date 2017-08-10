@@ -54,7 +54,7 @@ class TasksHeader extends React.Component<IProps, IState> {
     const resetTaskTitle = () => this.setState({newTaskTitle: ''})
 
     const {actionNewTaskSubmit} = this.props
-    if(actionNewTaskSubmit){
+    if(typeof(actionNewTaskSubmit) === 'function'){
       actionNewTaskSubmit(TaskRecord, resetTaskTitle)
     } else { // NOTE: should be if (Meteor.isTest) but doesn't work
       resetTaskTitle()
