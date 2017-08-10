@@ -16,6 +16,14 @@ test('CounterComponent exists', () => {
   const counterMinus = component.find('.app-counter-button--decrementer')
   expect(counterMinus.exists()).toEqual(true)
   expect(counterMinus.text()).toEqual('Decrease');
+
+  const counterNew = component.find('.app-counter-button--new')
+  expect(counterNew.exists()).toEqual(true)
+  expect(counterNew.text()).toEqual('New');
+
+  const counterAmount = component.find('.app-counter-amount')
+  expect(counterAmount.exists()).toEqual(true)
+  expect(counterAmount.text()).toEqual('Counters created: 1');
 });
 
 test('CounterComponent changes Value after Clicked', () => {
@@ -24,6 +32,8 @@ test('CounterComponent changes Value after Clicked', () => {
   const counterMessage = component.find('.app-counter-message')
   const counterAdd = component.find('.app-counter-button--incrementer')
   const counterMinus = component.find('.app-counter-button--decrementer')
+  const counterNew = component.find('.app-counter-button--new')
+  const counterAmount = component.find('.app-counter-amount')
 
   expect(counterMessage.text()).toEqual('Count is 1');
 
@@ -33,4 +43,10 @@ test('CounterComponent changes Value after Clicked', () => {
   counterMinus.simulate('click');
   counterMinus.simulate('click');
   expect(counterMessage.text()).toEqual('Count is 0');
+
+  counterNew.simulate('click')
+  expect(counterMessage.text()).toEqual('Count is 1');
+  expect(counterAmount.text()).toEqual('Counters created: 2');
+  counterNew.simulate('click')
+  expect(counterAmount.text()).toEqual('Counters created: 3');
 });

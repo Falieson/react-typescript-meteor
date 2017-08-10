@@ -1,12 +1,11 @@
 import { Meteor } from 'meteor/meteor'
 import * as React from 'react'
 
-declare module 'react-komposer' // FIXME
 import { compose } from 'react-komposer'
 
 import {Counter, Tasks} from '../ui/src/'
 import {Layrouter} from '../ui/lib/'
-import routeMap from '../startup/client/register-routes'
+import {RouteMap} from '../startup/client/'
 
 const Contents3 = (props) => (
   <div>
@@ -20,7 +19,7 @@ const Contents3 = (props) => (
 const Contents2 = () => (
   <div>
     <h3>Routing</h3>
-    <Layrouter routes={routeMap} />
+    <Layrouter routes={RouteMap} />
   </div>
 )
 
@@ -46,6 +45,7 @@ const App = (props) => (
     </section>
   </div>
 )
+// const App = ()=> (<h1>HELLO</h1>)
 
 function getTrackerLoader(reactiveMapper) {
   return (props, onData, env) => {

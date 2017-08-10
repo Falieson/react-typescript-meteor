@@ -1,22 +1,24 @@
-// NOTE: This was the first attempt but getting weird syntax error
-// So trying over with './CounterComponent.tsx' and using this as model to debug
-
+import {Meteor} from 'meteor/meteor'
 import * as React from 'react'
+import {ICounter} from './'
 
 interface IProps {
-  defaultValue: number | string
+  value?: number,
+  defaultValue?: number,
 }
 
 interface IState {
-  value: number
+  value: number,
+  counters: ICounter[],
 }
 
 export default class CounterComponent extends React.Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
-    const {defaultValue} = props
+    const {defaultValue, value} = props
     this.state = {
-      value: typeof(defaultValue) === 'number' ? defaultValue : parseInt(defaultValue, 10),
+      value: value || defaultValue,
+      counters: []
     };
   }
 
@@ -24,6 +26,28 @@ export default class CounterComponent extends React.Component<IProps, IState> {
     this.setState((prevState) => ({
       value: decrement ? prevState.value - 1 : prevState.value + 1,
     }))
+  }
+
+  public handleClickNew() {
+    const randomId = `${Math.floor((Math.random() * 100) + 1)}${Math.floor((Math.random() * 100) + 1)}`
+    const oldCounter = {id: randomId, value: this.state.value }
+    this.setState((ps) => ({
+      counters: [...ps.counters, oldCounter],
+      value: this.props.defaultValue
+    }))
+
+    Meteor.call('counters.add', oldCounter, (err: any, res: any) => {
+      if(!err) {
+        console.log("Added CounterID: ", res)
+      } else {
+        const {message} = err
+        if(message){
+          console.error(message, {err})
+        } else {
+          console.error("Full Error: ", {err})
+        }
+      }      
+    })
   }
 
   public renderChangeValue(
@@ -40,6 +64,17 @@ export default class CounterComponent extends React.Component<IProps, IState> {
     )
   }
 
+  public renderNewCounter() {
+    return (
+      <button
+        className={`app-counter-button--new`}
+        onClick={this.handleClickNew.bind(this)}
+      >
+        New
+      </button>
+    )
+  }
+
   public render() {
     return (
       <div>
@@ -49,6 +84,10 @@ export default class CounterComponent extends React.Component<IProps, IState> {
           </div>
           {this.renderChangeValue()}
           {this.renderChangeValue({decrement: true})}
+          {this.renderNewCounter()}
+        </div>
+        <div className="app-counter-amount">
+          Counters created: {this.state.counters.length + 1}
         </div>
       </div>
     );
