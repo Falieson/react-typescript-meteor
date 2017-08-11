@@ -1,38 +1,39 @@
 import { Meteor } from 'meteor/meteor'
 import * as React from 'react'
-
 import { compose } from 'react-komposer'
+import { Provider } from 'react-redux'
+import { combineReducers, createStore } from 'redux'
 
-import {RouteMap} from '../startup/client/'
-import {Layrouter} from '../ui/lib/'
-import {Counter, Tasks} from '../ui/src/'
+import {
+  ConnectedContents4, Contents1, Contents2, Contents3
+} from './AppContent'
 
-const Contents3 = props => (
-  <div>
-    <h3>Reactive Data from Meteor with React Komposer</h3>
-    <p>Meteor Connected: {props.connection.connected? 'true': 'false'}</p>
-    <p>Meteor userId: {props.userId}</p>
-    <p>Meteor loggingIn? {props.loggingIn}</p>
-  </div>
+const meta = (state = {
+  connected: false,
+  store: 'disconnected',
+}, action) => {
+  switch (action.type) {
+    case 'CONNECT':
+      return {
+        connected: true,
+        store: 'connected',
+      }
+    default:
+      return state
+  }
+}
+const rootReducer = combineReducers({
+  meta
+})
+const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
-const Contents2 = () => (
-  <div>
-    <h3>Routing</h3>
-    <Layrouter routes={RouteMap} />
-  </div>
-)
-
-const Contents1 = () => (
-  <div>
-    <h3>Counter</h3>
-    <Counter defaultValue={100} />
-    <h3>Tasks</h3>
-    <Tasks />
-  </div>
-)
 const App = props => (
   <div>
+    <ConnectedContents4 />
+    <hr />
     <Contents3 {...props} />
     <hr />
     <h2>React Typescript Loaded</h2>
@@ -45,7 +46,11 @@ const App = props => (
     </section>
   </div>
 )
-// const App = ()=> (<h1>HELLO</h1>)
+const ReduxApp = props => (
+  <Provider store={store}>
+    <App {...props} />
+  </Provider>
+)
 
 function getTrackerLoader(reactiveMapper) {
   return (props, onData, env) => {
@@ -76,5 +81,5 @@ function AppData(props, onData) {
   });
 }
 
-const Container = compose(getTrackerLoader(AppData))(App);
+const Container = compose(getTrackerLoader(AppData))(ReduxApp);
 export default Container
