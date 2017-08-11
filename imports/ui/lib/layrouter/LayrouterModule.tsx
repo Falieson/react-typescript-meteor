@@ -1,10 +1,9 @@
 import * as React from 'react';
-import {BrowserRouter} from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux'
 
-import {
-  IRoute,
-  Layout
-} from './'
+import {RouterHistory, Store} from '../../redux/'
+import { IRoute, Layout } from './'
 
 interface IProps {
   routes: IRoute[]
@@ -13,13 +12,16 @@ interface IProps {
 export default class LayrouterModule extends React.Component<IProps, {}> {
   public render() {
     return (
-      <BrowserRouter>
-        <div className='react-router'>
-          <Layout 
-            routes={this.props.routes}
-          />
-        </div>
-      </BrowserRouter>
+      <Provider store={Store}>
+        { /* ConnectedRouter will use the store from Provider automatically */ }
+        <ConnectedRouter history={RouterHistory}>
+          <div className='react-router'>
+            <Layout 
+              routes={this.props.routes}
+            />
+          </div>
+        </ConnectedRouter>
+      </Provider>
     )
   }
 }
